@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --base-href \"https://nexgenua.github.io/youtube-client/\"",
+    "build": "ng build --prod --base-href \"youtube-client\"",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

@@ -14,4 +14,4 @@ deploy:
   github-token: $GITHUB_TOKEN
   local_dir: dist/youtube-client
   on:
-    branch: task-1
+    branch: task-2
