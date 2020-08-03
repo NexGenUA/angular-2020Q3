@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - 12.18.3
+cache: npm
+
+install:
+  - npm i
+script:
+  - npm run lint
+  - npm run build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github-token: $GITHUB_TOKEN
+  local_dir: dist/youtube-client
+  on:
+    branch: task-1
