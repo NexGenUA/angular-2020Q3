@@ -1,0 +1,27 @@
+<mat-card class="card border-more-1-month">
+  <img class="card__image" mat-card-image [src]="item.snippet.thumbnails.medium.url">
+  <mat-card-content class="card__content">
+    <div class="card__item">
+      <span class="material-icons">visibility</span>
+      <span>{{ item.statistics.viewCount }}</span>
+    </div>
+    <div class="card__item">
+      <span class="material-icons favorite">favorite</span>
+      <span>{{ item.statistics.likeCount }}</span>
+    </div>
+    <div class="card__item">
+      <span class="material-icons favorite dislike">favorite</span>
+      <span>{{ item.statistics.dislikeCount }}</span>
+    </div>
+    <div class="card__item">
+      <span class="material-icons">forum</span>
+      <span>{{ item.statistics.commentCount }}</span>
+    </div>
+  </mat-card-content>
+  <mat-card-title class="card__title">
+    <span>{{ item.snippet.title }}</span>
+  </mat-card-title>
+  <mat-card-footer class="card__footer">
+    <button mat-raised-button color="primary">more...</button>
+  </mat-card-footer>
+</mat-card>

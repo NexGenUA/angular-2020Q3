@@ -1,0 +1,85 @@
+@import "../../shared/constants";
+
+.card {
+  width: 260px;
+  height: 330px;
+  margin: 15px;
+  padding: 0;
+
+  .card__image {
+    width: 220px;
+    height: 125px;
+    margin: 20px;
+    background-size: cover;
+  }
+
+  .card__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 20px;
+
+    .material-icons {
+      font-size: 20px;
+      margin-right: 2px;
+      position: relative;
+
+      &.dislike {
+
+        &::after {
+          content: "";
+          display: block;
+          width: 1px;
+          height: 20px;
+          background-color: black;
+          border-right: 2px solid white;
+          position: absolute;
+          transform: rotateZ(-45deg);
+          top: 0;
+          left: 7px;
+        }
+      }
+    }
+
+    & span {
+      font-size: 12px;
+      margin-left: 0;
+    }
+
+    .card__item {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .card__title {
+    display: flex;
+    justify-content: center;
+    margin: 18px;
+    text-align: center;
+    font-size: 18px;
+    height: 60px;
+    overflow: hidden;
+  }
+
+  .card__footer {
+    display: flex;
+    justify-content: center;
+  }
+
+  &.border-less-7-days {
+    border-bottom: 5px solid $border-less-7-days;
+  }
+
+  &.border-less-month {
+    border-bottom: 5px solid $border-less-month;
+  }
+
+  &.border-more-1-month {
+    border-bottom: 5px solid $border-more-1-month;
+  }
+
+  &.border-more-6-month {
+    border-bottom: 5px solid $border-more-6-month;
+  }
+}
