@@ -3,19 +3,19 @@
   <mat-card-content class="card__content">
     <div class="card__item">
       <span class="material-icons">visibility</span>
-      <span>{{ item.statistics.viewCount }}</span>
+      <span>{{ item.statistics.viewCount | reduceNumber }}</span>
     </div>
     <div class="card__item">
       <span class="material-icons favorite">favorite</span>
-      <span>{{ item.statistics.likeCount }}</span>
+      <span>{{ item.statistics.likeCount | reduceNumber }}</span>
     </div>
     <div class="card__item">
       <span class="material-icons favorite dislike">favorite</span>
-      <span>{{ item.statistics.dislikeCount }}</span>
+      <span>{{ item.statistics.dislikeCount | reduceNumber }}</span>
     </div>
     <div class="card__item">
       <span class="material-icons">forum</span>
-      <span>{{ item.statistics.commentCount }}</span>
+      <span>{{ item.statistics.commentCount | reduceNumber }}</span>
     </div>
   </mat-card-content>
   <mat-card-title class="card__title">

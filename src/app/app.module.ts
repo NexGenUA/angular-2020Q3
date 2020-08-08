@@ -12,6 +12,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { FormsModule } from '@angular/forms';
 import { SearchResultItemComponent } from './components/search-result-item/search-result-item.component';
 import { MatCardModule } from '@angular/material/card';
+import { ReduceNumberPipe } from './shared/pipes/reduce-number.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MatCardModule } from '@angular/material/card';
     HeaderComponent,
     SearchResultsComponent,
     FilterComponent,
-    SearchResultItemComponent
+    SearchResultItemComponent,
+    ReduceNumberPipe
   ],
   imports: [
     BrowserModule,
