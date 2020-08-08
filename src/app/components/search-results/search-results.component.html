@@ -1,4 +1,4 @@
 <app-search-result-item
-  *ngFor="let item of data.items"
+  *ngFor="let item of data.items | sort: sortData"
   [item]="item"
 ></app-search-result-item>

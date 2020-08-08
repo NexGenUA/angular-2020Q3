@@ -27,5 +27,6 @@ export class FilterComponent {
     };
     this.sort.sort({id: '', start: 'asc', disableClear: false});
     this.sortInfo.emit(sortWord);
+    this.inputValue = '';
   }
 }

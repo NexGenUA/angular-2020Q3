@@ -5,5 +5,7 @@
   [show]="show"
   (sortInfo)="sortData($event)"
 ></app-filter>
-<app-search-results></app-search-results>
+<app-search-results
+  [sortData]="data"
+></app-search-results>
 

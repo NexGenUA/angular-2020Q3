@@ -8,12 +8,13 @@ import { SortWord } from './shared/interfaces';
 })
 export class AppComponent {
   public show: Boolean = false;
+  public data: SortWord = null;
 
   public showFilter(): void {
     this.show = !this.show;
   }
 
   public sortData(data: SortWord): void {
-    console.log(data);
+    this.data = data;
   }
 }

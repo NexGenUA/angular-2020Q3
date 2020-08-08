@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchResultItemComponent } from './components/search-result-item/search-result-item.component';
 import { MatCardModule } from '@angular/material/card';
 import { ReduceNumberPipe } from './shared/pipes/reduce-number.pipe';
+import { SortPipe } from './shared/pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ReduceNumberPipe } from './shared/pipes/reduce-number.pipe';
     SearchResultsComponent,
     FilterComponent,
     SearchResultItemComponent,
-    ReduceNumberPipe
+    ReduceNumberPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,
