@@ -23,6 +23,7 @@ export interface SearchItem {
     channelTitle: string;
     tags: string[];
     categoryId: string;
+    defaultLanguage?: string;
     liveBroadcastContent: string;
     localized: {
       title: string;

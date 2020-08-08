@@ -10,13 +10,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { FilterComponent } from './components/filter/filter.component';
 import { MatSortModule } from '@angular/material/sort';
 import { FormsModule } from '@angular/forms';
+import { SearchResultItemComponent } from './components/search-result-item/search-result-item.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SearchResultsComponent,
-    FilterComponent
+    FilterComponent,
+    SearchResultItemComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MatButtonModule,
     MatSortModule,
-    FormsModule
+    FormsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
