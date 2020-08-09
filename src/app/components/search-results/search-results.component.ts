@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { mockData } from '../../shared/mock-data';
 import { SearchResponse } from '../../shared/models/search-response.model';
 import { SortWord } from '../../shared/interfaces';
 
@@ -9,6 +8,6 @@ import { SortWord } from '../../shared/interfaces';
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent {
-  public data: SearchResponse = mockData;
   @Input() public sortData: SortWord;
+  @Input() public data: SearchResponse;
 }

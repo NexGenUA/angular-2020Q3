@@ -15,6 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ReduceNumberPipe } from './shared/pipes/reduce-number.pipe';
 import { SortPipe } from './shared/pipes/sort.pipe';
 import { BorderColorDirective } from './shared/directives/border-color.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { BorderColorDirective } from './shared/directives/border-color.directive
     MatSortModule,
     FormsModule,
     MatCardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

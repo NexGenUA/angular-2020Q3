@@ -1,5 +1,6 @@
 <app-header
   (show)="showFilter()"
+  (response)="setData($event)"
 ></app-header>
 <app-filter
   [show]="show"
@@ -7,5 +8,6 @@
 ></app-filter>
 <app-search-results
   [sortData]="data"
+  [data]="dataResponse"
 ></app-search-results>
 
