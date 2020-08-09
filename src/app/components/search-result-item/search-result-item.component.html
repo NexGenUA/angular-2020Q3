@@ -1,4 +1,4 @@
-<mat-card class="card border-more-1-month">
+<mat-card [appBorderColor]="item.snippet.publishedAt" class="card">
   <img class="card__image" mat-card-image [src]="item.snippet.thumbnails.medium.url">
   <mat-card-content class="card__content">
     <div class="card__item">

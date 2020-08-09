@@ -14,6 +14,7 @@ import { SearchResultItemComponent } from './components/search-result-item/searc
 import { MatCardModule } from '@angular/material/card';
 import { ReduceNumberPipe } from './shared/pipes/reduce-number.pipe';
 import { SortPipe } from './shared/pipes/sort.pipe';
+import { BorderColorDirective } from './shared/directives/border-color.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SortPipe } from './shared/pipes/sort.pipe';
     FilterComponent,
     SearchResultItemComponent,
     ReduceNumberPipe,
-    SortPipe
+    SortPipe,
+    BorderColorDirective,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ import { SortPipe } from './shared/pipes/sort.pipe';
     MatButtonModule,
     MatSortModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
