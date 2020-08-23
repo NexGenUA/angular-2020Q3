@@ -7,6 +7,7 @@ import { SortWord } from '../interfaces';
 })
 export class SortPipe implements PipeTransform {
   private sorted: SearchItem[];
+  private filterWord: string = '';
 
   private sortOfDate(direction: string): SearchItem[] {
     const dir: number = direction === 'desc' ? 1 : -1;
@@ -32,48 +33,52 @@ export class SortPipe implements PipeTransform {
 
   public transform(value: SearchItem[], sortData: SortWord): SearchItem[] {
 
-    this.sorted = value.slice();
-    const filterName: string = sortData?.active || null;
-    const filterWord: string = sortData?.word || null;
+    if (value) {
+      this.sorted = value.slice();
+      const filterName: string = sortData?.active || null;
+      this.filterWord = sortData ? sortData?.word || this.filterWord : '';
 
-    if (filterName) {
-      switch (filterName) {
-        case 'date': {
-          switch (sortData.direction) {
-            case 'asc': {
-              return this.sortOfDate('asc');
-            }
-            case 'desc': {
-              return this.sortOfDate('desc');
-            }
-            default: {
-              return value;
-            }
-          }
-        }
-        case 'count-of-views': {
-          switch (sortData.direction) {
-            case 'asc': {
-              return this.sortOfView('asc');
-            }
-            case 'desc': {
-              return this.sortOfView('desc');
-            }
-            default: {
-              return value;
+      this.sorted = this.filterByWord(this.filterWord);
+
+      if (filterName) {
+        switch (filterName) {
+          case 'date': {
+            switch (sortData.direction) {
+              case 'asc': {
+                return this.sortOfDate('asc');
+              }
+              case 'desc': {
+                return this.sortOfDate('desc');
+              }
+              default: {
+                return this.sorted;
+              }
             }
           }
-        }
-        default: {
-          return value;
+          case 'count-of-views': {
+            switch (sortData.direction) {
+              case 'asc': {
+                return this.sortOfView('asc');
+              }
+              case 'desc': {
+                return this.sortOfView('desc');
+              }
+              default: {
+                return this.sorted;
+              }
+            }
+          }
+          default: {
+            return this.sorted;
+          }
         }
       }
-    }
 
-    if (filterWord) {
-      return this.filterByWord(filterWord);
-    }
+      if (this.filterWord) {
+        return this.filterByWord(this.filterWord);
+      }
 
-    return value;
+      return value;
+    }
   }
 }

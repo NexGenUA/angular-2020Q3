@@ -1,13 +1,21 @@
 <div class="header">
   <span class="logo"></span>
   <form class="form">
-    <input class="input" type="text" placeholder="What are you want to find out?">
+    <input
+      class="input"
+      type="text"
+      placeholder="What are you want to find out?"
+      [(ngModel)]="inputValue"
+      name="queryString"
+      (keydown.enter)="search(inputValue)"
+    >
     <button
-      (click)="delete()"
+      (click)="search(inputValue)"
       type="button"
       class="search"
       mat-raised-button
       color="primary"
+      [disabled]="!inputValue"
     >search</button>
     <button
       type="button"

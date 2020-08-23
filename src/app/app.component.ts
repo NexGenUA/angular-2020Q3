@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { SortWord } from './shared/interfaces';
-import { SearchResponse } from './shared/models/search-response.model';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +9,7 @@ import { SearchResponse } from './shared/models/search-response.model';
 export class AppComponent {
   public show: Boolean = true;
   public data: SortWord = null;
-  public dataResponse: SearchResponse = null;
+  public query: string = '';
 
   public showFilter(): void {
     this.show = !this.show;
@@ -20,7 +19,7 @@ export class AppComponent {
     this.data = data;
   }
 
-  public setData(response: SearchResponse): void {
-    this.dataResponse = response;
+  public getData(query: string): void {
+    this.query = query;
   }
 }
