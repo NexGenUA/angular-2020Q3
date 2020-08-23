@@ -1,6 +1,6 @@
 <ng-container *ngIf="data; else noData">
   <app-search-result-item
-    *ngFor="let item of data | async | sort: sortData; i as index"
+    *ngFor="let item of (data | async)?.items | sort: sortData"
     [item]="item"
   ></app-search-result-item>
 </ng-container>

@@ -2,8 +2,7 @@ import { Component, Input } from '@angular/core';
 import { SortWord } from '../../shared/interfaces';
 import { HttpService } from '../../shared/services/http.service';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { SearchItem } from '../../shared/models/search-item.model';
+import { SearchResponse } from '../../shared/models/search-response.model';
 
 @Component({
   selector: 'app-search-results',
@@ -24,13 +23,13 @@ export class SearchResultsComponent {
     return this._query;
   }
 
-  public data: Observable<SearchItem[]> = null;
+  public data: Observable<SearchResponse> = null;
 
   constructor(private httpService: HttpService) {}
 
   private getData(query: string): void {
     if (query) {
-      this.data = this.httpService.getData(query).pipe(map(d => d.items));
+      this.data = this.httpService.getData(query);
     }
   }
 
