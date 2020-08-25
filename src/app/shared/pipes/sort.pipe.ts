@@ -1,6 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { SearchItem } from '../models/search-item.model';
 import { SortWord } from '../interfaces';
+import { num, sortDirection } from '../enums';
+const { POSITIVE, NEGATIVE } = num;
+const { ASK, DESK } = sortDirection;
 
 @Pipe({
   name: 'sort'
@@ -10,7 +13,7 @@ export class SortPipe implements PipeTransform {
   private filterWord: string = '';
 
   private sortOfDate(direction: string): SearchItem[] {
-    const dir: number = direction === 'desc' ? 1 : -1;
+    const dir: number = direction === DESK ? POSITIVE : NEGATIVE;
     return this.sorted.sort((a, b): number => {
       const dateA: number = +new Date(a.snippet.publishedAt);
       const dateB: number = +new Date(b.snippet.publishedAt);
@@ -19,7 +22,7 @@ export class SortPipe implements PipeTransform {
   }
 
   private sortOfView(direction: string): SearchItem[] {
-    const dir: number = direction === 'asc' ? 1 : -1;
+    const dir: number = direction === ASK ? POSITIVE : NEGATIVE;
     return this.sorted.sort((a, b): number => {
       const viewA: number = +a.statistics.viewCount;
       const viewB: number = +b.statistics.viewCount;
@@ -44,11 +47,11 @@ export class SortPipe implements PipeTransform {
         switch (filterName) {
           case 'date': {
             switch (sortData.direction) {
-              case 'asc': {
-                return this.sortOfDate('asc');
+              case `${ASK}`: {
+                return this.sortOfDate(ASK);
               }
-              case 'desc': {
-                return this.sortOfDate('desc');
+              case `${DESK}`: {
+                return this.sortOfDate(DESK);
               }
               default: {
                 return this.sorted;
@@ -57,11 +60,11 @@ export class SortPipe implements PipeTransform {
           }
           case 'count-of-views': {
             switch (sortData.direction) {
-              case 'asc': {
-                return this.sortOfView('asc');
+              case `${ASK}`: {
+                return this.sortOfView(ASK);
               }
-              case 'desc': {
-                return this.sortOfView('desc');
+              case `${DESK}`: {
+                return this.sortOfView(DESK);
               }
               default: {
                 return this.sorted;

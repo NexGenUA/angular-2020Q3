@@ -1,4 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { num } from '../enums';
+const { ONE_THOUSAND, ONE_MILLION } = num;
 
 @Pipe({
   name: 'reduceNumber'
@@ -10,16 +12,16 @@ export class ReduceNumberPipe implements PipeTransform {
   public transform(value: string): string {
     this.num = +value;
 
-    if (this.num < 1000) {
+    if (this.num < ONE_THOUSAND) {
       return value;
     }
 
-    if (this.num < 1000000) {
-      this.num = +(this.num / 1000).toFixed(1);
+    if (this.num < ONE_MILLION) {
+      this.num = +(this.num / ONE_THOUSAND).toFixed(1);
       return `${this.num}k`;
     }
 
-    this.num = +(this.num / 1000000).toFixed(1);
+    this.num = +(this.num / ONE_MILLION).toFixed(1);
     return `${this.num}m`;
 
   }

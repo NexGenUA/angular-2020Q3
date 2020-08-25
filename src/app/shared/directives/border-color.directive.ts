@@ -1,4 +1,6 @@
 import { Directive, HostBinding, Input } from '@angular/core';
+import { shiftDate } from '../enums';
+const { FIRST_DATE_DAYS, SECOND_DATE_MONTH, THIRD_DATE_MONTH } = shiftDate;
 
 @Directive({
   selector: '[appBorderColor]'
@@ -15,19 +17,19 @@ export class BorderColorDirective {
     const date: number = currentDate.getDate();
     const hour: number = currentDate.getHours();
     const minutes: number = currentDate.getMinutes();
-    const sevenDaysLessDate: Date = new Date(year, month, date - 7, hour, minutes);
-    const oneMonthLessDate: Date = new Date(year, month - 1, date, hour, minutes);
-    const sixMonthLessDate: Date = new Date(year, month - 6, date, hour, minutes);
+    const firstDate: Date = new Date(year, month, date - FIRST_DATE_DAYS, hour, minutes);
+    const secondDate: Date = new Date(year, month - SECOND_DATE_MONTH, date, hour, minutes);
+    const thirdDate: Date = new Date(year, month - THIRD_DATE_MONTH, date, hour, minutes);
 
-    if (+sevenDaysLessDate < +publishedDate) {
+    if (+firstDate < +publishedDate) {
       return 'border-less-7-days';
     }
 
-    if (+oneMonthLessDate < +publishedDate) {
+    if (+secondDate < +publishedDate) {
       return 'border-less-month';
     }
 
-    if (+sixMonthLessDate > +publishedDate) {
+    if (+thirdDate > +publishedDate) {
       return 'border-more-6-month';
     }
 
