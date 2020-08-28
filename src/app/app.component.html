@@ -1,14 +1,8 @@
 <app-header
   (show)="showFilter()"
-  (query)="getData($event)"
-  (resetFilter)="sortData($event)"
 ></app-header>
 <app-filter
   [show]="show"
-  (sortInfo)="sortData($event)"
 ></app-filter>
-<app-search-results
-  [sortData]="data"
-  [queryString]="query"
-></app-search-results>
+<router-outlet></router-outlet>
 
