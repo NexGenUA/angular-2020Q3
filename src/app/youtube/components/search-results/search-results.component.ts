@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { SortWord } from '../../shared/interfaces';
-import { HttpService } from '../../shared/services/http.service';
+import { SortWord } from '../../../shared/interfaces';
+import { HttpService } from '../../../shared/services/http.service';
 import { Observable } from 'rxjs';
-import { SearchResponse } from '../../shared/models/search-response.model';
+import { SearchResponse } from '../../../shared/models/search-response.model';
 
 @Component({
   selector: 'app-search-results',

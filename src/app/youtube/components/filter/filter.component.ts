@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { SortWord } from '../../shared/interfaces';
+import { SortWord } from '../../../shared/interfaces';
 
 @Component({
   selector: 'app-filter',
