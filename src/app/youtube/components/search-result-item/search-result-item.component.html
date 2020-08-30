@@ -1,27 +1,10 @@
 <mat-card [appBorderColor]="item.snippet.publishedAt" class="card">
   <img class="card__image" mat-card-image [src]="item.snippet.thumbnails.medium.url">
-  <mat-card-content class="card__content">
-    <div class="card__item">
-      <span class="material-icons">visibility</span>
-      <span>{{ item.statistics.viewCount | reduceNumber }}</span>
-    </div>
-    <div class="card__item">
-      <span class="material-icons favorite">favorite</span>
-      <span>{{ item.statistics.likeCount | reduceNumber }}</span>
-    </div>
-    <div class="card__item">
-      <span class="material-icons favorite dislike">favorite</span>
-      <span>{{ item.statistics.dislikeCount | reduceNumber }}</span>
-    </div>
-    <div class="card__item">
-      <span class="material-icons">forum</span>
-      <span>{{ item.statistics.commentCount | reduceNumber }}</span>
-    </div>
-  </mat-card-content>
+  <app-info-bar [item]="item"></app-info-bar>
   <mat-card-title class="card__title">
     <span>{{ item.snippet.title }}</span>
   </mat-card-title>
   <mat-card-footer class="card__footer">
-    <button mat-raised-button color="primary">more...</button>
+    <button mat-raised-button color="primary" (click)="showDetailedInfo()">more...</button>
   </mat-card-footer>
 </mat-card>

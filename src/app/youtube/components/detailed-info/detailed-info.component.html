@@ -1,0 +1,30 @@
+<div class="detailed-block">
+  <button
+    mat-raised-button
+    color="primary"
+    class="hide-button"
+    type="button"
+    (click)="hide()"
+  >
+    <span class="material-icons">
+      keyboard_arrow_left
+    </span>
+  </button>
+  <div class="image-wrap">
+    <img
+      [src]="item.snippet.thumbnails.maxres.url"
+      [alt]="item.snippet.title"
+      class="image"
+    >
+  </div>
+  <div
+    class="info"
+    [appBorderColor]="item.snippet.publishedAt"
+  >
+    <app-info-bar
+      [item]="item"
+    ></app-info-bar>
+  </div>
+</div>
+
+
