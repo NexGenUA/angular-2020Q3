@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { LocalDataService } from '../../shared/services/local-data.service';
-import { UserBlockService } from '../../shared/services/user-block.service';
-import { AuthService } from '../../shared/services/auth.service';
+import { LocalDataService } from '../../../shared/services/local-data.service';
+import { UserBlockService } from '../../../shared/services/user-block.service';
+import { AuthService } from '../../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

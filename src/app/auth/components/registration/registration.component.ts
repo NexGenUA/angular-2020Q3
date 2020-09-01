@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../../environments/environment.prod';
 import { Router } from '@angular/router';
-import { AuthService } from '../../shared/services/auth.service';
+import { AuthService } from '../../../shared/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -48,7 +48,7 @@ export class RegistrationComponent implements OnInit {
     this.stream$ = this.auth.register(this.form.value).subscribe(
       (user) => {
         this.isLoading = false;
-        this.router.navigate(['/login'], {
+        this.router.navigate(['/auth/login'], {
           queryParams: {
             registered: true,
           },

@@ -1,25 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
-import { SearchResultsComponent } from './youtube/components/search-results/search-results.component';
-import { RegistrationComponent } from './auth/registration/registration.component';
+import { SearchResultsComponent } from './youtube/pages/search-results/search-results.component';
 import { NotFoundComponent } from './core/components/not-found/not-found.component';
+import { AuthGuard } from './shared/guards/auth.guard';
+import { LoginComponent } from './auth/components/login/login.component';
+import { RegistrationComponent } from './auth/components/registration/registration.component';
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    loadChildren: () => import('./auth/auth.module').then((module) => module.AuthModule),
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
   },
   {
     path: 'registration',
     component: RegistrationComponent,
-    loadChildren: () => import('./auth/auth.module').then((module) => module.AuthModule),
-    data: { title: 'Registration' }
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
   },
   {
     path: '',
     component: SearchResultsComponent,
+    canActivate: [AuthGuard],
     data: { title: 'Youtube client' }
   },
   {
