@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 300px);
+}
+
+.not-found {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  height: 100px;
+
+  .not-found-img {
+    margin-right: 20px;
+  }
+
+  .not-found-message {
+    font-weight: bold;
+    font-size: 24px;
+    color: #828282;
+  }
+}

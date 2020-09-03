@@ -21,8 +21,17 @@
     class="info"
     [appBorderColor]="item.snippet.publishedAt"
   >
+    <div class="top">
+      <h1 class="title">{{ item.snippet.title }}</h1>
+      <span class="date">{{ item.snippet.publishedAt | date: 'EEEE, LLLL dd, yyyy' }}</span>
+    </div>
+    <div class="description">
+      <span class="description__title">Description:</span>
+      <p class="description__info">{{ item.snippet.description }}</p>
+    </div>
     <app-info-bar
       [item]="item"
+      class="info-bar"
     ></app-info-bar>
   </div>
 </div>
