@@ -1,0 +1,39 @@
+.card__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 220px;
+  margin: 0 auto;
+
+  .material-icons {
+    font-size: 20px;
+    margin-right: 2px;
+    position: relative;
+
+    &.dislike {
+
+      &::after {
+        content: "";
+        display: block;
+        width: 1px;
+        height: 20px;
+        background-color: black;
+        border-right: 2px solid white;
+        position: absolute;
+        transform: rotateZ(-45deg);
+        top: 0;
+        left: 7px;
+      }
+    }
+  }
+
+  & span {
+    font-size: 12px;
+    margin-left: 0;
+  }
+
+  .card__item {
+    display: flex;
+    align-items: center;
+  }
+}

@@ -1,0 +1,23 @@
+.form {
+  width: 300px;
+  margin: 50px auto;
+  padding: 25px;
+  background-color: #F2F2F2;
+}
+
+.register-form, .login-reg {
+  margin: 0 auto;
+  width: 300px;
+}
+
+.buttons {
+  width: 108px;
+  margin-left: auto;
+}
+
+.mat-spinner {
+  position: absolute !important;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  transform: translate(-50%, -50%);
+}

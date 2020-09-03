@@ -1,0 +1,98 @@
+@import "src/app/shared/constants";
+
+.image {
+  width: 730px;
+  height: 460px;
+  border-radius: 0 0 0 5px;
+}
+
+.detailed-block {
+  display: flex;
+  position: relative;
+}
+
+.info {
+  width: 430px;
+  height: 460px;
+  background-color: #E5E5E5;
+  box-sizing: border-box;
+  border-radius: 0 5px 5px 0;
+
+  &.border-less-7-days {
+    border-bottom: 5px solid $border-less-7-days;
+  }
+
+  &.border-less-month {
+    border-bottom: 5px solid $border-less-month;
+  }
+
+  &.border-more-1-month {
+    border-bottom: 5px solid $border-more-1-month;
+  }
+
+  &.border-more-6-month {
+    border-bottom: 5px solid $border-more-6-month;
+  }
+}
+
+.hide-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  min-width: 32px;
+  height: 32px;
+  padding: 0;
+  position: absolute;
+  left: -32px;
+  border-radius: 5px 0 0 5px;
+
+  .material-icons {
+    font-size: 40px;
+  }
+}
+
+.info {
+
+  .top {
+    margin: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .title {
+      display: inline-block;
+      font-weight: bold;
+      font-size: 18px;
+      width: 200px;
+      margin: 0;
+      max-height: 96px;
+      overflow: hidden;
+    }
+  }
+
+  .description__info, .date {
+    font-size: 12px;
+    line-height: 14px;
+    color: #828282;
+  }
+
+  .description {
+    margin: 0 35px;
+    position: absolute;
+    bottom: 70px;
+
+    .description__info {
+      margin-top: 5px;
+      overflow: hidden;
+      height: 210px;
+    }
+  }
+
+  .info-bar {
+    width: 210px;
+    margin: 0 100px;
+    position: absolute;
+    bottom: 30px;
+  }
+}

@@ -1,0 +1,10 @@
+<mat-card [appBorderColor]="item.snippet.publishedAt" class="card">
+  <img class="card__image" mat-card-image [src]="item.snippet.thumbnails.medium.url">
+  <app-info-bar [item]="item"></app-info-bar>
+  <mat-card-title class="card__title">
+    <span>{{ item.snippet.title }}</span>
+  </mat-card-title>
+  <mat-card-footer class="card__footer">
+    <button mat-raised-button color="primary" (click)="showDetailedInfo()">more...</button>
+  </mat-card-footer>
+</mat-card>
