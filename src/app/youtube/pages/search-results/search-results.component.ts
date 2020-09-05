@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { SortWord } from '../../../shared/interfaces';
 import { HttpService } from '../../../shared/services/http.service';
-import { Observable } from 'rxjs';
 import { SearchResponse } from '../../../shared/models/search-response.model';
 import { DataService } from '../../../shared/services/data.service';
 import { SearchItem } from '../../../shared/models/search-item.model';
@@ -16,7 +15,7 @@ export class SearchResultsComponent {
 
   public sortData: SortWord;
   public detailedInfo: SearchItem = null;
-  public data: Observable<SearchResponse> = null;
+  public data: SearchResponse = null;
 
   constructor(
     private httpService: HttpService,
@@ -25,7 +24,9 @@ export class SearchResultsComponent {
   ) {
     this.dataService.query.subscribe((query) => {
       if (query) {
-        this.data = this.httpService.getData(query);
+        this.httpService.getData(query).subscribe(data => {
+          this.data = data;
+        });
       }
     });
 

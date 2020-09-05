@@ -15,3 +15,10 @@ export enum sortDirection {
   DESK = 'desk',
   ASK = 'asc'
 }
+
+export enum queryValues {
+  type = 'video',
+  part = 'snippet',
+  partStats = 'snippet,statistics',
+  maxResults = '16',
+}

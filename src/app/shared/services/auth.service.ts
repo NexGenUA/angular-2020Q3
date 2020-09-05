@@ -5,7 +5,6 @@ import { LoginResponse } from '../models/login-response.model';
 import { tap } from 'rxjs/operators';
 import { UserCreate } from '../models/user-create.model';
 import { UserCreateResponse } from '../models/user-create-response.model';
-import { RefreshTokenResponse } from '../models/refresh-token-response.model';
 import { LocalDataService } from './local-data.service';
 import { UserBlockService } from './user-block.service';
 import { Router } from '@angular/router';
@@ -24,7 +23,7 @@ export class AuthService {
     private userBlockService: UserBlockService,
     private router: Router
   ) {
-    this.url = environment.url;
+    this.url = new URL(environment.api_url);
   }
 
   public setRefreshToken(refreshToken: string): void {
@@ -58,26 +57,6 @@ export class AuthService {
     this.url.pathname = 'users';
     const url: string = this.url.href;
     return this.http.post<UserCreateResponse>(url, user);
-  }
-
-  public updateTokens(): Observable<RefreshTokenResponse> {
-    const userId: string = this.localData.getUserId();
-    this.url.pathname = `/users/${userId}/tokens`;
-    const url: string = this.url.href;
-    return this.http.get<RefreshTokenResponse>(url).pipe(
-      tap(({refreshToken, token}) => {
-        this.localData.setAuthData({refreshToken, token, userId});
-        this.setToken(token);
-        this.setRefreshToken(refreshToken);
-      })
-    );
-  }
-  public getRefreshToken(): string {
-    return this.refreshToken;
-  }
-
-  public getToken(): string {
-    return this.token;
   }
 
   public isAuthenticated(): boolean {

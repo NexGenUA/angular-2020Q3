@@ -13,7 +13,10 @@ type statistics = { [key in statisticsProps]: string; };
 export interface SearchItem {
   kind: string;
   etag: string;
-  id: string;
+  id: {
+    kind: string;
+    videoId: string;
+  };
   snippet: {
     publishedAt: string;
     channelId: string;

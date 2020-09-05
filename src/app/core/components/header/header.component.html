@@ -9,17 +9,8 @@
       placeholder="What are you want to find out?"
       [(ngModel)]="inputValue"
       name="queryString"
-      (keydown.enter)="search(inputValue)"
+      (input)="inputChange($event)"
     >
-    <button
-      (click)="search(inputValue)"
-      type="button"
-      class="search"
-      mat-raised-button
-      color="primary"
-      [disabled]="!inputValue"
-    >search
-    </button>
     <button
       type="button"
       class="settings"

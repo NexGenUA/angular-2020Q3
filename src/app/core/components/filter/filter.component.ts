@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { SortWord } from '../../../shared/interfaces';
 import { DataService } from '../../../shared/services/data.service';
