@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SearchItem } from '../../../shared/models/search-item.model';
 
 @Component({
@@ -6,13 +6,6 @@ import { SearchItem } from '../../../shared/models/search-item.model';
   templateUrl: './info-bar.component.html',
   styleUrls: ['./info-bar.component.scss']
 })
-export class InfoBarComponent implements OnInit {
-
+export class InfoBarComponent {
   @Input() public item: SearchItem;
-
-  constructor() { }
-
-  public ngOnInit(): void {
-  }
-
 }

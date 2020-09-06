@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { environment } from '../../../../environments/environment.prod';
@@ -11,10 +11,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss']
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent implements OnInit, OnDestroy {
   public form: FormGroup;
   public symbols: string = '+-_@$!%*?&#.,;:[]{}';
-  public stream$: Subscription;
+  public register$: Subscription;
   public emailTooltipText: string = 'E-mail must be format mymail@mydomain.com';
   public passwordTooltipText: string = `Password must be minimum 8 characters and  contain one uppercase, one lowercase letter, one number digit and one special character ${this.symbols}`;
   public isShowTooltipEmail: boolean = false;
@@ -25,7 +25,8 @@ export class RegistrationComponent implements OnInit {
     private router: Router,
     private auth: AuthService,
     private snackBar: MatSnackBar,
-  ) { }
+  ) {
+  }
 
   public ngOnInit(): void {
     this.form = new FormGroup({
@@ -41,11 +42,17 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
+  public ngOnDestroy(): void {
+    if (this.register$) {
+      this.register$.unsubscribe();
+    }
+  }
+
   public register(): void {
     this.isLoading = true;
     this.form.disable();
 
-    this.stream$ = this.auth.register(this.form.value).subscribe(
+    this.register$ = this.auth.register(this.form.value).subscribe(
       (user) => {
         this.isLoading = false;
         this.router.navigate(['/auth/login'], {
