@@ -1,8 +1,10 @@
+@import "./src/app/shared/constants";
+
 .form {
   width: 300px;
   margin: 50px auto;
   padding: 25px;
-  background-color: #F2F2F2;
+  background-color: $form-background-color;
 }
 
 .register-form, .login-reg {

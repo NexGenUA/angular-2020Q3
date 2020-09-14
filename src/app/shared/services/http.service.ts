@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { SearchResponse } from '../models/search-response.model';
 import { environment } from '../../../environments/environment.prod';
 import { queryValues } from '../enums';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 import { Params } from '@angular/router';
 
 @Injectable({
@@ -31,10 +31,8 @@ export class HttpService {
       .set('maxResults', queryValues.maxResults)
       .set('q', query);
     return this.http.get<SearchResponse>(url.href, { params }).pipe(
-      switchMap(res => {
-        const ids: string[] = res.items.map(item => item.id.videoId);
-        return this.getStats(ids.join());
-      })
+      map(res => res.items.map(item => item.id.videoId).join()),
+      switchMap(ids =>  this.getStats(ids))
     );
   }
 }

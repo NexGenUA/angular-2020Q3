@@ -1,0 +1,18 @@
+@import "./src/app/shared/constants";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 430px;
+  height: 495px;
+  border-radius: 15px;
+  background-color: $form-background-color;
+  margin: 20px auto;
+
+  .label {
+    display: flex;
+    flex-direction: column;
+  }
+}

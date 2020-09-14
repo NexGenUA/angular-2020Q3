@@ -68,7 +68,7 @@
       "timeEnd",
       "trace"
     ],
-    "no-inferrable-types": [true, "ignore-params", "ignore-properties"],
+    "no-inferrable-types": [false, "ignore-params", "ignore-properties"],
     "no-construct": true,
     "no-parameter-properties": false,
     "no-debugger": true,

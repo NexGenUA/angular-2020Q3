@@ -5,8 +5,15 @@ import { NotFoundComponent } from './core/components/not-found/not-found.compone
 import { AuthGuard } from './shared/guards/auth.guard';
 import { LoginComponent } from './auth/components/login/login.component';
 import { RegistrationComponent } from './auth/components/registration/registration.component';
+import { FormAddItemComponent } from './admin/form-add-item/form-add-item.component';
 
 const routes: Routes = [
+  {
+    path: 'admin',
+    component: FormAddItemComponent,
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+    data: { title: 'Admin'}
+  },
   {
     path: 'login',
     component: LoginComponent,

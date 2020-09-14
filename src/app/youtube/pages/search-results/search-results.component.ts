@@ -5,7 +5,10 @@ import { SearchResponse } from '../../../shared/models/search-response.model';
 import { DataService } from '../../../shared/services/data.service';
 import { SearchItem } from '../../../shared/models/search-item.model';
 import { DetailedInfoService } from '../../../shared/services/detailed-info.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { getYoutubeItems, youtubeItemsIsLoad } from '../../../store/selectors/youtube-items.selector';
+import { YoutubeAction } from '../../../store/actions/youtube-items.action';
 
 @Component({
   selector: 'app-search-results',
@@ -23,11 +26,14 @@ export class SearchResultsComponent implements OnDestroy {
   public sortData: SortWord;
   public detailedInfo: SearchItem = null;
   public data: SearchResponse = null;
+  public youtubeItems$: Observable<SearchItem[]> = this.store$.pipe(select(getYoutubeItems));
+  public youtubeItemsIsLoad$: Observable<boolean> = this.store$.pipe(select(youtubeItemsIsLoad));
 
   constructor(
     private httpService: HttpService,
     private dataService: DataService,
     private detailedInfoService: DetailedInfoService,
+    private store$: Store,
   ) {
     this.dataServiceQuery$ = this.dataService.query.subscribe((query) => {
       if (query) {
@@ -53,5 +59,9 @@ export class SearchResultsComponent implements OnDestroy {
     this.subscribers.forEach(subscriber => {
       subscriber.unsubscribe();
     });
+  }
+
+  public dispatch(): void {
+    this.store$.dispatch(new YoutubeAction('javascript'));
   }
 }

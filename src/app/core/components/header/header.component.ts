@@ -6,6 +6,8 @@ import { AuthService } from '../../../shared/services/auth.service';
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 import { DetailedInfoService } from '../../../shared/services/detailed-info.service';
+import { Store } from '@ngrx/store';
+import { YoutubeAction } from '../../../store/actions/youtube-items.action';
 
 @Component({
   selector: 'app-header',
@@ -26,6 +28,7 @@ export class HeaderComponent implements OnDestroy {
     private userBlockService: UserBlockService,
     private auth: AuthService,
     private detailedInfoService: DetailedInfoService,
+    private store$: Store,
   ) {
     this.userBlock$ = this.userBlockService.updateUser.subscribe((user) => {
       this.user = user;
@@ -37,7 +40,8 @@ export class HeaderComponent implements OnDestroy {
       filter(value => value.trim().length > 2)
     ).subscribe(queryString => {
       this.dataService.sortData.emit(null);
-      this.dataService.query.emit(queryString);
+      // this.dataService.query.emit(queryString);
+      this.store$.dispatch(new YoutubeAction(queryString));
       this.detailedInfoService.show.emit(null);
     });
   }
