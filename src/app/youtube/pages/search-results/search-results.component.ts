@@ -9,6 +9,7 @@ import { Observable, Subscription } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { getYoutubeItems, youtubeItemsIsLoad } from '../../../store/selectors/youtube-items.selector';
 import { YoutubeAction } from '../../../store/actions/youtube-items.action';
+import { getCreateItems, isCreateItems } from '../../../store/selectors/create-item.selector';
 
 @Component({
   selector: 'app-search-results',
@@ -28,6 +29,8 @@ export class SearchResultsComponent implements OnDestroy {
   public data: SearchResponse = null;
   public youtubeItems$: Observable<SearchItem[]> = this.store$.pipe(select(getYoutubeItems));
   public youtubeItemsIsLoad$: Observable<boolean> = this.store$.pipe(select(youtubeItemsIsLoad));
+  public createItems$: Observable<SearchItem[]> = this.store$.pipe(select(getCreateItems));
+  public isCreateItems: Observable<boolean> = this.store$.pipe(select(isCreateItems));
 
   constructor(
     private httpService: HttpService,

@@ -4,6 +4,7 @@ import { SearchResultItemComponent } from './components/search-result-item/searc
 import { SharedModule } from '../shared/shared.module';
 import { InfoBarComponent } from './components/info-bar/info-bar.component';
 import { DetailedInfoComponent } from './components/detailed-info/detailed-info.component';
+import { CreateItemComponent } from './components/create-item/create-item.component';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { DetailedInfoComponent } from './components/detailed-info/detailed-info.
     SearchResultItemComponent,
     InfoBarComponent,
     DetailedInfoComponent,
+    CreateItemComponent,
   ],
   imports: [SharedModule]
 })

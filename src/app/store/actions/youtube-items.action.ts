@@ -11,13 +11,4 @@ export class MakeRequestAction implements Action {
   constructor(public payload: YoutubeItems) { }
 }
 
-// export class CountClearAction implements Action {
-//   readonly type = countActionType.clear;
-// }
-//
-// export class CountUpdatedAtAction implements Action {
-//   readonly type = countActionType.updatedAt;
-//   constructor(public payload: UpdateAtPayload) { }
-// }
-
 export type youtubeActions = MakeRequestAction | YoutubeAction;

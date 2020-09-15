@@ -1,5 +1,9 @@
-<ng-container *ngIf="(youtubeItemsIsLoad$ | async); else noData">
+<ng-container *ngIf="(youtubeItemsIsLoad$ | async) || (isCreateItems | async); else noData">
   <ng-template [ngIf]="!detailedInfo">
+    <app-create-item
+      *ngFor="let createItem of (createItems$ | async)"
+      [createItem]="createItem"
+    ></app-create-item>
     <app-search-result-item
       *ngFor="let item of (youtubeItems$ | async) | sort: sortData"
       [item]="item"

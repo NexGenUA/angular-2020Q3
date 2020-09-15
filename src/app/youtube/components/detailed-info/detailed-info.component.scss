@@ -1,9 +1,10 @@
 @import "src/app/shared/constants";
 
-.image {
+.image-wrap, .image {
   width: 730px;
   height: 460px;
   border-radius: 0 0 0 5px;
+  background-color: $background-2;
 }
 
 .detailed-block {
@@ -14,7 +15,7 @@
 .info {
   width: 430px;
   height: 460px;
-  background-color: #E5E5E5;
+  background-color: $background-1;
   box-sizing: border-box;
   border-radius: 0 5px 5px 0;
 

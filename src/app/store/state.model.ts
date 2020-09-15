@@ -3,8 +3,8 @@ import { User } from '../shared/models/user.model';
 
 export interface State {
   youtubeItems: YoutubeItems;
+  createItems: YoutubeItems;
   // user: User;
-  // addedItems: SearchItem[];
 }
 
 export interface YoutubeItems {
@@ -12,13 +12,25 @@ export interface YoutubeItems {
   isData: boolean;
 }
 
+export interface CreateItem {
+  title: string;
+  description: string;
+  image: string;
+  linkVideo: string;
+  date: string;
+}
+
 export enum nodes {
   youtubeItems = 'youtubeItems',
   user = 'user',
-  addedItems = 'addedItems',
+  createItems = 'createItems',
 }
 
 export enum youtubeActionType {
-  getItems = '[ITEMS] get',
-  makeRequest = '[ITEMS] request',
+  getItems = '[YOUTUBE-ITEMS] get',
+  makeRequest = '[YOUTUBE-ITEMS] request',
+}
+
+export enum createItemType {
+  createItem = '[CREATE-ITEMS] create'
 }
