@@ -7,5 +7,5 @@ import { createItemReducer } from './createItems/create-items.reducer';
 export const reducers: ActionReducerMap<State> = {
   [nodes.youtubeItems]: youtubeItemsReducer,
   [nodes.createItems]: createItemReducer,
-  // [user]: userReducer,
+  [nodes.user]: userReducer,
 };

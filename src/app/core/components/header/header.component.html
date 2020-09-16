@@ -21,13 +21,13 @@
       <span class="material-icons tune">tune</span>
     </button>
   </form>
-  <div *ngIf="!user" class="user-info">
+  <div *ngIf="!(user$ | async)" class="user-info">
     <button mat-raised-button color="primary" routerLink="/login" class="login">Log In</button>
     <button mat-raised-button color="primary" routerLink="/registration" class="sign-up">Sign Up</button>
   </div>
-  <div *ngIf="user" class="user-info">
+  <div *ngIf="(user$ | async)" class="user-info">
     <div class="left-block">
-      <span class="user-name">Hello, {{ user.name }}!</span>
+      <span class="user-name">Hello, {{ (user$ | async)?.name }}!</span>
       <span class="logout-link" (click)="logout()">Logout</span>
     </div>
     <span class="material-icons user">account_box</span>

@@ -1,13 +1,14 @@
 import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { DataService } from '../../../shared/services/data.service';
 import { User } from '../../../shared/models/user.model';
-import { UserBlockService } from '../../../shared/services/user-block.service';
 import { AuthService } from '../../../shared/services/auth.service';
-import { Subject, Subscription } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 import { DetailedInfoService } from '../../../shared/services/detailed-info.service';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { YoutubeAction } from '../../../store/actions/youtube-items.action';
+import { loginUser } from '../../../store/selectors/user.selector';
+import { UserLoginAction } from '../../../store/actions/user.action';
 
 @Component({
   selector: 'app-header',
@@ -20,19 +21,15 @@ export class HeaderComponent implements OnDestroy {
 
   @Output() public show: EventEmitter<Boolean> = new EventEmitter<Boolean>();
 
-  public user: User = null;
   public inputValue: string = '';
+  public user$: Observable<User> = this.store$.pipe(select(loginUser));
 
   constructor(
     private dataService: DataService,
-    private userBlockService: UserBlockService,
     private auth: AuthService,
     private detailedInfoService: DetailedInfoService,
     private store$: Store,
   ) {
-    this.userBlock$ = this.userBlockService.updateUser.subscribe((user) => {
-      this.user = user;
-    });
 
     this.input$.pipe(
       debounceTime(700),
@@ -40,7 +37,6 @@ export class HeaderComponent implements OnDestroy {
       filter(value => value.trim().length > 2)
     ).subscribe(queryString => {
       this.dataService.sortData.emit(null);
-      // this.dataService.query.emit(queryString);
       this.store$.dispatch(new YoutubeAction(queryString));
       this.detailedInfoService.show.emit(null);
     });
@@ -61,6 +57,7 @@ export class HeaderComponent implements OnDestroy {
   }
 
   public logout(): void {
+    this.store$.dispatch(new UserLoginAction(null));
     this.auth.logout();
   }
 }

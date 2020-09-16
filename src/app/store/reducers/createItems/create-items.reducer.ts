@@ -1,5 +1,5 @@
 import { ActionReducer } from '@ngrx/store';
-import { createItemType, YoutubeItems } from '../../state.model';
+import { createItemActionType, YoutubeItems } from '../../state.model';
 import { createItemActions } from '../../actions/create-item.action';
 
 const initialState: YoutubeItems = {
@@ -12,7 +12,7 @@ export const createItemReducer: ActionReducer<YoutubeItems> = (
   action: createItemActions
 ): YoutubeItems => {
   switch (action.type) {
-    case createItemType.createItem:
+    case createItemActionType.createItem:
       return {
         ...state,
         items: [...state.items, action.payload],

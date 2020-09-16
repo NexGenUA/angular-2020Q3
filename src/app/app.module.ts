@@ -12,6 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { reducers } from './store/reducers';
 import { YoutubeEffect } from './store/effects/youtube.effect';
+import { UserEffect } from './store/effects/user.effect';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { YoutubeEffect } from './store/effects/youtube.effect';
       }
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([YoutubeEffect]),
+    EffectsModule.forRoot([YoutubeEffect, UserEffect]),
     StoreRouterConnectingModule.forRoot(),
   ],
   providers: [],

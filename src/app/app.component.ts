@@ -3,9 +3,10 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
 import { LocalDataService } from './shared/services/local-data.service';
-import { User } from './shared/models/user.model';
 import { AuthService } from './shared/services/auth.service';
-import { UserBlockService } from './shared/services/user-block.service';
+import { Store } from '@ngrx/store';
+import { User } from './shared/models/user.model';
+import { UserLoginAction } from './store/actions/user.action';
 
 @Component({
   selector: 'app-root',
@@ -21,8 +22,8 @@ export class AppComponent implements OnInit {
     private titleService: Title,
     private localData: LocalDataService,
     private auth: AuthService,
-    private userBlockService: UserBlockService,
-    ) {}
+    private store$: Store
+  ) { }
 
   private getChild(activatedRoute: ActivatedRoute): ActivatedRoute {
     if (activatedRoute.firstChild) {
@@ -35,8 +36,12 @@ export class AppComponent implements OnInit {
   public ngOnInit(): void {
     const token: string = this.localData.getToken();
     const refreshToken: string = this.localData.getRefreshToken();
-    const user: User = this.localData.getUser();
     const userId: string = this.localData.getUserId();
+    const user: User = this.localData.getUser();
+
+    if (user) {
+      this.store$.dispatch(new UserLoginAction(user));
+    }
 
     if (token) {
       this.auth.setToken(token);
@@ -44,10 +49,6 @@ export class AppComponent implements OnInit {
 
     if (refreshToken) {
       this.auth.setRefreshToken(refreshToken);
-    }
-
-    if (user) {
-      this.userBlockService.setUser(user);
     }
 
     if (userId) {

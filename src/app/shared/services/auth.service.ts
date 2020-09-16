@@ -6,9 +6,9 @@ import { tap } from 'rxjs/operators';
 import { UserCreate } from '../models/user-create.model';
 import { UserCreateResponse } from '../models/user-create-response.model';
 import { LocalDataService } from './local-data.service';
-import { UserBlockService } from './user-block.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment.prod';
+import { LoginUser } from '../models/user.model';
 
 @Injectable({ providedIn: 'root'})
 export class AuthService {
@@ -20,7 +20,6 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private localData: LocalDataService,
-    private userBlockService: UserBlockService,
     private router: Router
   ) {
     this.url = new URL(environment.api_url);
@@ -33,14 +32,13 @@ export class AuthService {
   public logout(): void {
     this.setToken(null);
     this.setRefreshToken(null);
-    this.userBlockService.setUser(null);
     this.setUserId(null);
     this.localData.deleteUser();
     this.localData.clearAuthData();
     this.router.navigate(['/login']);
   }
 
-  public login(user: LoginResponse): Observable<LoginResponse> {
+  public login(user: LoginUser): Observable<LoginResponse> {
     this.url.pathname = 'signin';
     const url: string = this.url.toString();
     return this.http.post<LoginResponse>(url, user).pipe(
