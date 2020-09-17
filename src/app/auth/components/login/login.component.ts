@@ -30,8 +30,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private router: Router,
     private snackBar: MatSnackBar,
     private store$: Store,
-  ) {
-  }
+  ) { }
 
   public ngOnInit(): void {
     this.auth.setToken(null);
@@ -68,7 +67,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       res => {
         if (res) {
           this.localData.setUser(res);
-          this.router.navigate(['/']);
+          this.router.navigate(['/search']);
           this.isLoading = false;
         }
       });

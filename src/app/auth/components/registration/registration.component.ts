@@ -55,7 +55,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this.register$ = this.auth.register(this.form.value).subscribe(
       (user) => {
         this.isLoading = false;
-        this.router.navigate(['/auth/login'], {
+        this.router.navigate(['/login'], {
           queryParams: {
             registered: true,
           },

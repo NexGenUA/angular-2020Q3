@@ -46,6 +46,6 @@ export class FormAddItemComponent {
     this.snackBar.open('Item Created', 'Success', {
       duration: 3000,
     });
-    this.router.navigate(['/']);
+    this.router.navigate(['/search']);
   }
 }
