@@ -1,0 +1,43 @@
+@import "../../../shared/constants";
+
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $background-1;
+  width: 100%;
+  height: 70px;
+  z-index: 1;
+  position: relative;
+  transition: .3s ease;
+  transform: translateY(0);
+}
+
+.hide {
+  transform: translateY(-70px);
+}
+
+.sort-text {
+  color: $text-color-1;
+  margin: 0 15px 0 0;
+}
+
+.sort-links {
+  color: $text-color-sort;
+
+  & th {
+    font-weight: 400;
+  }
+
+  &.by-word {
+    margin-right: 10px;
+  }
+
+  &.table {
+    text-decoration: underline;
+  }
+}
+
+.search-input {
+  border: 0;
+}

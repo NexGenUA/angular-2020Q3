@@ -1,0 +1,18 @@
+<div class="filter"
+     [class.hide]="show">
+  <p class="sort-text">Sorting by:</p>
+  <table
+    matSort
+    (matSortChange)="sortData($event)"
+    class="sort-links table"
+  >
+    <tr>
+      <th mat-sort-header="date">date</th>
+      <th mat-sort-header="count-of-views">count of views</th>
+    </tr>
+  </table>
+  <div class="by-word-or-sentence">
+    <span class="sort-links by-word">by word or sentence</span>
+    <input [(ngModel)]="inputValue" (change)="sortByWord()" class="search-input" type="text">
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<form class="form" [formGroup]="form" (ngSubmit)="createCard()">
+  <h2 class="h2">Create new card</h2>
+  <label class="label">
+    <span class="label-text">Title</span>
+    <input class="input" formControlName="title">
+  </label>
+  <label class="label">
+    <span class="label-text">Description</span>
+    <input class="input" formControlName="description">
+  </label>
+  <label class="label">
+    <span class="label-text">Img</span>
+    <input class="input" formControlName="image">
+  </label>
+  <label class="label">
+    <span class="label-text">Link video</span>
+    <input class="input" formControlName="linkVideo">
+  </label>
+  <button
+    class="button"
+    mat-raised-button
+    color="primary"
+    [disabled]="form.invalid"
+    type="submit"
+  >Create Card</button>
+</form>
